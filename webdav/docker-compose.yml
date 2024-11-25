@@ -1,0 +1,15 @@
+version: '3.8'  # Puedes ajustar la versión según tus necesidades
+
+services:
+  webdav:
+    image: ionelmc/webdav
+    container_name: webdav
+    restart: always
+    ports:
+      - "7000:8080"
+    environment:
+      WEBDAV_USERNAME: $WEBDAV_USERNAME
+      WEBDAV_PASSWORD: $WEBDAV_PASSWORD
+      UID: $UID
+    volumes:
+      - $MEDIA:/media
