@@ -1,0 +1,19 @@
+---
+services:
+  qbittorrent:
+    image: lscr.io/linuxserver/qbittorrent:latest
+    container_name: qbittorrent
+    environment:
+      - PUID=$PUID
+      - PGID=$PGID
+      - TZ=$TZ
+      - WEBUI_PORT=$WEBUI_PORT
+      - TORRENTING_PORT=$TORRENTING_PORT
+    volumes:
+      - $CONFIG:/config
+      - $DOWNLOADS:/downloads
+    ports:
+      - 8090:8090
+      - 6881:6881
+      - 6881:6881/udp
+    restart: unless-stopped
