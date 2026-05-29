@@ -1,0 +1,9 @@
+cloudflare-ddns:
+    image: favonia/cloudflare-ddns:latest
+    container_name: cloudflare-ddns
+    network_mode: host
+    restart: unless-stopped
+    environment:
+      - CLOUDFLARE_API_TOKEN=$TOKEN
+      - DOMAINS=$DOMAINS
+      - PROXIED=false  # Importante: esto mantiene la "nube gris" para la VPN
