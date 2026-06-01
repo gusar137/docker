@@ -1,0 +1,15 @@
+services:
+  jdownloader:
+    image: jlesage/jdownloader-2
+    container_name: jdownloader
+    ports:
+      - "5800:5800"  # Interfaz web (VNC)
+    volumes:
+      - $CONFIG:/config
+      - $DOWNLOADS:/output  # Carpeta donde se guardan las descargas
+    environment:
+      - TZ=$TZ
+      - MYJDOWNLOADER_EMAIL=$MYJDOWNLOADER_EMAIL
+      - MYJDOWNLOADER_PASSWORD=$MYJDOWNLOADER_PASSWORD
+      - MYJDOWNLOADER_DEVICE_NAME=$MYJDOWNLOADER_DEVICE_NAME  # Nombre que aparece en MyJDownloader
+    restart: unless-stopped
