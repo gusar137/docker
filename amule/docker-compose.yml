@@ -1,0 +1,12 @@
+services:
+  amule:
+    image: ngosang/amule
+    container_name: amule
+    restart: unless-stopped
+    ports:
+      - "4711:4711"
+      - "4662:4662"
+      - "4672:4672/udp"
+    volumes:
+      - $CONFIG:/home/amule/.aMule
+      - $DOWNLOADS:/incoming
